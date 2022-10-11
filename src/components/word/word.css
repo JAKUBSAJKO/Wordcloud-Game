@@ -1,0 +1,22 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 16px;
+}
+
+.answer {
+  font-size: 18px;
+  font-weight: 700;
+  margin: 8px 0;
+  pointer-events: none;
+}
+
+.word {
+  font-size: 18px;
+  font-weight: 700;
+  padding: 0 48px;
+  margin: 8px 0;
+  cursor: pointer;
+}
