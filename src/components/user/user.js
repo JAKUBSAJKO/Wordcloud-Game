@@ -1,4 +1,5 @@
-import Button from 'components/button/button';
+import axios from 'axios';
+import { Button } from 'components/button/button';
 import { GameContext } from 'contexts/gameContext';
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
@@ -11,13 +12,15 @@ export const User = () => {
 
   useEffect(() => {
     localStorage.clear();
+    axios('http://localhost:3001/animals').then((data) =>
+      console.log(data.data)
+    );
   }, []);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     navigate('/game');
     localStorage.setItem('Username', username);
-    console.log(username);
   };
 
   return (
