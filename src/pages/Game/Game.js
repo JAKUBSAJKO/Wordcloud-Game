@@ -2,6 +2,8 @@ import './game.css';
 import { Title } from 'components/title/title';
 import { Button } from 'components/button/button';
 import { Word } from 'components/word/word';
+import { useContext } from 'react';
+import { GameContext } from 'contexts/gameContext';
 
 const animals = {
   question: 'select animals',
@@ -23,6 +25,34 @@ const animals = {
 };
 
 const Game = () => {
+  const {
+    finishGameBtn,
+    setFinishGameBtn,
+    pickedWords,
+    setCorrectAnswers,
+    setWrongAnswers,
+    setNoSelectedCorrectAnswers,
+  } = useContext(GameContext);
+
+  const checkAnswers = () => {
+    setFinishGameBtn((prev) => !prev);
+    animals.all_words.map((word) => {
+      if (pickedWords.includes(word)) {
+        if (animals.good_words.includes(word)) {
+          setCorrectAnswers((prev) => [...prev, word]);
+        } else {
+          setWrongAnswers((prev) => [...prev, word]);
+        }
+      } else {
+        if (animals.good_words.includes(word)) {
+          setNoSelectedCorrectAnswers((prev) => [...prev, word]);
+        }
+      }
+
+      return true;
+    });
+  };
+
   return (
     <div className="layout">
       <div className="game-container">
@@ -32,7 +62,11 @@ const Game = () => {
             <Word key={animal} name={animal} />
           ))}
         </div>
-        <Button text="check answers" />
+        {finishGameBtn ? (
+          <Button text="finish game" />
+        ) : (
+          <Button onClick={checkAnswers} text="check answers" />
+        )}
       </div>
     </div>
   );

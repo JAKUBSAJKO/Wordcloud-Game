@@ -1,8 +1,15 @@
-import { useState } from 'react';
+import { GameContext } from 'contexts/gameContext';
+import { useContext } from 'react';
 import './word.css';
 
 export const Word = ({ name }) => {
-  const [pickedWords, setPickedWords] = useState([]);
+  const {
+    finishGameBtn,
+    pickedWords,
+    setPickedWords,
+    correctAnswers,
+    wrongAnswers,
+  } = useContext(GameContext);
 
   const selectWord = (e) => {
     const word = e.target.innerText;
@@ -16,12 +23,37 @@ export const Word = ({ name }) => {
 
   return (
     <div className="card">
-      <p className="answer">Good</p>
+      {finishGameBtn ? (
+        <p
+          className="answer"
+          style={
+            correctAnswers.includes(name)
+              ? { color: 'green' }
+              : { color: 'pink' }
+          }
+        >
+          {correctAnswers.includes(name)
+            ? 'Good'
+            : wrongAnswers.includes(name)
+            ? 'Bad'
+            : ''}
+        </p>
+      ) : (
+        <p></p>
+      )}
       <p
         onClick={selectWord}
         className="word"
         style={
-          pickedWords.includes(name) ? { color: 'silver' } : { color: 'black' }
+          finishGameBtn
+            ? correctAnswers.includes(name)
+              ? { color: 'greenyellow' }
+              : wrongAnswers.includes(name)
+              ? { color: 'red' }
+              : {}
+            : pickedWords.includes(name)
+            ? { color: 'silver' }
+            : { color: 'black' }
         }
       >
         {name}
