@@ -1,31 +1,13 @@
 import './game.css';
-import { Title } from 'components/title/title';
 import { Button } from 'components/button/button';
 import { Word } from 'components/word/word';
 import { useContext } from 'react';
 import { GameContext } from 'contexts/gameContext';
 import { useNavigate } from 'react-router-dom';
 
-const animals = {
-  question: 'select animals',
-  all_words: [
-    'hole',
-    'sofa',
-    'pear',
-    'tiger',
-    'oatmeal',
-    'square',
-    'nut',
-    'cub',
-    'shirt',
-    'tab',
-    'passenger',
-    'cow',
-  ],
-  good_words: ['tiger', 'cow'],
-};
-
 const Game = () => {
+  const navigate = useNavigate();
+
   const {
     finishGameBtn,
     setFinishGameBtn,
@@ -33,21 +15,22 @@ const Game = () => {
     setCorrectAnswers,
     setWrongAnswers,
     setNoSelectedCorrectAnswers,
+    allWords,
+    goodWords,
+    question,
   } = useContext(GameContext);
-
-  const navigate = useNavigate();
 
   const checkAnswers = () => {
     setFinishGameBtn((prev) => !prev);
-    animals.all_words.map((word) => {
+    allWords.map((word) => {
       if (pickedWords.includes(word)) {
-        if (animals.good_words.includes(word)) {
+        if (goodWords.includes(word)) {
           setCorrectAnswers((prev) => [...prev, word]);
         } else {
           setWrongAnswers((prev) => [...prev, word]);
         }
       } else {
-        if (animals.good_words.includes(word)) {
+        if (goodWords.includes(word)) {
           setNoSelectedCorrectAnswers((prev) => [...prev, word]);
         }
       }
@@ -57,12 +40,12 @@ const Game = () => {
   };
 
   return (
-    <div className="layout">
+    <div className="layout-game">
       <div className="game-container">
-        <Title title={animals.question} />
+        <h2>{question}</h2>
         <div className="game-board">
-          {animals.all_words.map((animal) => (
-            <Word key={animal} name={animal} />
+          {allWords.map((word) => (
+            <Word key={word} name={word} />
           ))}
         </div>
         {finishGameBtn ? (

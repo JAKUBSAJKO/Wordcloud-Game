@@ -7,6 +7,9 @@ const gameContext = {
   correctAnswers: [],
   wrongAnswers: [],
   noSelectedCorrectAnswers: [],
+  question: '',
+  allWords: [],
+  goodWords: [],
 };
 
 export const GameContext = createContext(gameContext);
@@ -18,6 +21,9 @@ export const GameContextProvider = ({ children }) => {
   const [correctAnswers, setCorrectAnswers] = useState([]);
   const [wrongAnswers, setWrongAnswers] = useState([]);
   const [noSelectedCorrectAnswers, setNoSelectedCorrectAnswers] = useState([]);
+  const [question, setQuestion] = useState();
+  const [allWords, setAllWords] = useState([]);
+  const [goodWords, setGoodWords] = useState([]);
 
   return (
     <GameContext.Provider
@@ -34,6 +40,12 @@ export const GameContextProvider = ({ children }) => {
         setWrongAnswers,
         noSelectedCorrectAnswers,
         setNoSelectedCorrectAnswers,
+        question,
+        setQuestion,
+        allWords,
+        setAllWords,
+        goodWords,
+        setGoodWords,
       }}
     >
       {children}

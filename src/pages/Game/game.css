@@ -1,4 +1,4 @@
-.layout {
+.layout-game {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +13,7 @@
 }
 
 .game-board {
-  max-width: 50vw;
+  max-width: 60vw;
   border: 1px solid black;
   border-radius: 4px;
   display: flex;
@@ -21,4 +21,8 @@
   justify-content: space-around;
   padding: 32px;
   margin-bottom: 4px;
+}
+
+h2 {
+  margin-bottom: 24px;
 }
