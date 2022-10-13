@@ -36,10 +36,10 @@ export const Word = ({ name }) => {
             ? 'Good'
             : wrongAnswers.includes(name)
             ? 'Bad'
-            : ''}
+            : 'test'}
         </p>
       ) : (
-        <p></p>
+        <p className="answer">test</p>
       )}
       <p
         onClick={selectWord}
