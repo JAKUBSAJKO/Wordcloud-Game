@@ -4,6 +4,7 @@ import { Button } from 'components/button/button';
 import { Word } from 'components/word/word';
 import { useContext } from 'react';
 import { GameContext } from 'contexts/gameContext';
+import { useNavigate } from 'react-router-dom';
 
 const animals = {
   question: 'select animals',
@@ -34,6 +35,8 @@ const Game = () => {
     setNoSelectedCorrectAnswers,
   } = useContext(GameContext);
 
+  const navigate = useNavigate();
+
   const checkAnswers = () => {
     setFinishGameBtn((prev) => !prev);
     animals.all_words.map((word) => {
@@ -63,7 +66,7 @@ const Game = () => {
           ))}
         </div>
         {finishGameBtn ? (
-          <Button text="finish game" />
+          <Button onClick={() => navigate('/result')} text="finish game" />
         ) : (
           <Button onClick={checkAnswers} text="check answers" />
         )}
