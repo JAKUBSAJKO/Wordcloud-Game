@@ -2,62 +2,62 @@ import { GameContext } from 'contexts/gameContext';
 import { useContext } from 'react';
 import './word.css';
 
-export const Word = ({ name }) => {
+export const Word = ({ word }) => {
   const {
-    finishGameBtn,
-    pickedWords,
-    setPickedWords,
+    selectedWords,
+    setSelectedWords,
     correctAnswers,
     wrongAnswers,
+    addToArray,
+    removeFromArray,
+    finishGameBtn,
   } = useContext(GameContext);
 
-  const selectWord = (e) => {
-    const word = e.target.innerText;
-
-    if (pickedWords.includes(word)) {
-      setPickedWords(pickedWords.filter((pick) => pick !== word));
+  const selectWord = () => {
+    if (selectedWords.includes(word)) {
+      removeFromArray(word, selectedWords, setSelectedWords);
     } else {
-      setPickedWords((prev) => [...prev, word]);
+      addToArray(word, setSelectedWords);
     }
   };
 
+  const checkedAnswerStyle = correctAnswers.includes(word)
+    ? 'word correctAnswer'
+    : wrongAnswers.includes(word)
+    ? 'word wrongAnswer'
+    : 'answer';
+
+  const checkedAnswerWord = correctAnswers.includes(word)
+    ? 'Good'
+    : wrongAnswers.includes(word)
+    ? 'Bad'
+    : 'Empty';
+
+  const checkWordStyle = correctAnswers.includes(word)
+    ? 'word correct'
+    : wrongAnswers.includes(word)
+    ? 'word wrong'
+    : 'word';
+
+  const wordStyle = selectedWords.includes(word) ? 'word select' : 'word';
+
   return (
     <div className="card">
-      {finishGameBtn ? (
-        <p
-          className="answer"
-          style={
-            correctAnswers.includes(name)
-              ? { color: 'green' }
-              : { color: 'pink' }
-          }
-        >
-          {correctAnswers.includes(name)
-            ? 'Good'
-            : wrongAnswers.includes(name)
-            ? 'Bad'
-            : 'test'}
-        </p>
-      ) : (
-        <p className="answer">test</p>
-      )}
-      <p
-        onClick={selectWord}
-        className="word"
-        style={
-          finishGameBtn
-            ? correctAnswers.includes(name)
-              ? { color: 'greenyellow' }
-              : wrongAnswers.includes(name)
-              ? { color: 'red' }
-              : {}
-            : pickedWords.includes(name)
-            ? { color: 'silver' }
-            : { color: 'black' }
-        }
-      >
-        {name}
-      </p>
+      <div style={{ textAlign: 'center' }}>
+        {finishGameBtn ? (
+          <>
+            <p className={checkedAnswerStyle}>{checkedAnswerWord}</p>
+            <p className={checkWordStyle}>{word}</p>
+          </>
+        ) : (
+          <>
+            <p className="answer">Empty</p>
+            <p onClick={selectWord} className={wordStyle}>
+              {word}
+            </p>
+          </>
+        )}
+      </div>
     </div>
   );
 };

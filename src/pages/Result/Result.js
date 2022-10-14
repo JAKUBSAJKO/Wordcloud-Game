@@ -21,6 +21,7 @@ const Result = () => {
     setFinishGameBtn((prev) => !prev);
     navigate('/');
   };
+
   return (
     <div className="layout-result">
       <div className="container-result">

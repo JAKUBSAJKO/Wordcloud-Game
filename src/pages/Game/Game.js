@@ -11,30 +11,30 @@ const Game = () => {
   const {
     finishGameBtn,
     setFinishGameBtn,
-    pickedWords,
+    selectedWords,
     setCorrectAnswers,
     setWrongAnswers,
     setNoSelectedCorrectAnswers,
     allWords,
     goodWords,
     question,
+    addToArray,
   } = useContext(GameContext);
 
   const checkAnswers = () => {
     setFinishGameBtn((prev) => !prev);
     allWords.map((word) => {
-      if (pickedWords.includes(word)) {
+      if (selectedWords.includes(word)) {
         if (goodWords.includes(word)) {
-          setCorrectAnswers((prev) => [...prev, word]);
+          addToArray(word, setCorrectAnswers);
         } else {
-          setWrongAnswers((prev) => [...prev, word]);
+          addToArray(word, setWrongAnswers);
         }
       } else {
         if (goodWords.includes(word)) {
-          setNoSelectedCorrectAnswers((prev) => [...prev, word]);
+          addToArray(word, setNoSelectedCorrectAnswers);
         }
       }
-
       return true;
     });
   };
@@ -45,7 +45,7 @@ const Game = () => {
         <h2>{question}</h2>
         <div className="game-board">
           {allWords.map((word) => (
-            <Word key={word} name={word} />
+            <Word key={word} word={word} />
           ))}
         </div>
         {finishGameBtn ? (

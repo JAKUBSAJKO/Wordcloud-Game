@@ -3,7 +3,7 @@ import { createContext, useState } from 'react';
 const gameContext = {
   username: '',
   finishBtn: false,
-  pickedWords: [],
+  selectedWords: [],
   correctAnswers: [],
   wrongAnswers: [],
   noSelectedCorrectAnswers: [],
@@ -17,13 +17,21 @@ export const GameContext = createContext(gameContext);
 export const GameContextProvider = ({ children }) => {
   const [username, setUsername] = useState('');
   const [finishGameBtn, setFinishGameBtn] = useState(false);
-  const [pickedWords, setPickedWords] = useState([]);
+  const [selectedWords, setSelectedWords] = useState([]);
   const [correctAnswers, setCorrectAnswers] = useState([]);
   const [wrongAnswers, setWrongAnswers] = useState([]);
   const [noSelectedCorrectAnswers, setNoSelectedCorrectAnswers] = useState([]);
   const [question, setQuestion] = useState();
   const [allWords, setAllWords] = useState([]);
   const [goodWords, setGoodWords] = useState([]);
+
+  const addToArray = (word, setArray) => {
+    setArray((prev) => [...prev, word]);
+  };
+
+  const removeFromArray = (word, array, setArray) => {
+    setArray(array.map((el) => el !== word));
+  };
 
   return (
     <GameContext.Provider
@@ -32,8 +40,8 @@ export const GameContextProvider = ({ children }) => {
         setUsername,
         finishGameBtn,
         setFinishGameBtn,
-        pickedWords,
-        setPickedWords,
+        selectedWords,
+        setSelectedWords,
         correctAnswers,
         setCorrectAnswers,
         wrongAnswers,
@@ -46,6 +54,8 @@ export const GameContextProvider = ({ children }) => {
         setAllWords,
         goodWords,
         setGoodWords,
+        addToArray,
+        removeFromArray,
       }}
     >
       {children}

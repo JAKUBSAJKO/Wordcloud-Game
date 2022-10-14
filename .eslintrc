@@ -3,9 +3,10 @@
     "react-app",
     "react-app/jest",
     "plugin:prettier/recommended",
-    "prettier"
+    "prettier",
+    "plugin:react-hooks/recommended"
   ],
-  "plugins": ["prettier"],
+  "plugins": ["prettier", "react-hooks"],
   "rules": {
     "prettier/prettier": [
       "warn",
@@ -13,7 +14,8 @@
         "singleQuote": true,
         "endOfLine": "auto"
       }
-    ]
+    ],
+    "react-hooks/exhaustive-deps": "warn"
   },
   "env": {
     "browser": true,
