@@ -9,13 +9,29 @@ import './user.css';
 export const User = () => {
   const navigate = useNavigate();
 
-  const { username, setUsername, setQuestion, setAllWords, setGoodWords } =
-    useContext(GameContext);
+  const {
+    username,
+    setUsername,
+    setQuestion,
+    setAllWords,
+    setGoodWords,
+    setSelectedWords,
+    setCorrectAnswers,
+    setWrongAnswers,
+    setNoSelectedCorrectAnswers,
+  } = useContext(GameContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     localStorage.clear();
     localStorage.setItem('Username', username);
+    setQuestion([]);
+    setAllWords([]);
+    setGoodWords([]);
+    setSelectedWords([]);
+    setCorrectAnswers([]);
+    setWrongAnswers([]);
+    setNoSelectedCorrectAnswers([]);
     const category =
       categoriesName[Math.floor(Math.random() * categoriesName.length)];
     API(category);
