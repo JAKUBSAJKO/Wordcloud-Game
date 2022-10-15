@@ -6,6 +6,7 @@ import './result.css';
 
 const Result = () => {
   const navigate = useNavigate();
+
   const {
     username,
     correctAnswers,
@@ -13,6 +14,7 @@ const Result = () => {
     noSelectedCorrectAnswers,
     setFinishGameBtn,
   } = useContext(GameContext);
+
   const points =
     correctAnswers.length * 2 -
     (wrongAnswers.length + noSelectedCorrectAnswers.length);
