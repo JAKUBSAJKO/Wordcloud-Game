@@ -24,3 +24,14 @@
   color: #1fa9f4;
   margin-top: 8px;
 }
+
+@media screen and (max-width: 767px) {
+  .result-text {
+    font-size: 22px;
+  }
+
+  .points {
+    font-size: 26px;
+    margin: 16px 0;
+  }
+}

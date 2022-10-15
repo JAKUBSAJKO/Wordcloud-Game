@@ -43,3 +43,28 @@
   color: palevioletred;
   visibility: visible;
 }
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .card {
+    padding: 4px 8px;
+  }
+
+  .answer {
+    margin: 0;
+    font-size: 16px;
+    margin: 4px 0;
+  }
+
+  .word {
+    font-size: 16px;
+    padding: 0 48px;
+    margin: 8px 4px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .card {
+    padding: 0;
+    width: 100%;
+  }
+}

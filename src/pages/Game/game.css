@@ -27,3 +27,32 @@
 h2 {
   margin-bottom: 24px;
 }
+
+@media screen and (min-width: 767px) and (max-width: 1023px) {
+  .game-board {
+    padding: 12px 12px 32px 12px;
+    max-width: 74vw;
+  }
+
+  h2 {
+    font-size: 18px;
+    margin-bottom: 8px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .layout-game {
+    height: auto;
+    padding: 32px 0;
+  }
+
+  .game-board {
+    max-width: 80vw;
+    justify-content: center;
+    padding: 12px 12px 48px 12px;
+  }
+
+  h2 {
+    font-size: 22px;
+  }
+}

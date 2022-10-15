@@ -47,21 +47,19 @@ export const Word = ({ word }) => {
 
   return (
     <div className="card">
-      <div style={{ textAlign: 'center' }}>
-        {finishGameBtn ? (
-          <>
-            <p className={checkedAnswerStyle}>{checkedAnswerWord}</p>
-            <p className={checkWordStyle}>{word}</p>
-          </>
-        ) : (
-          <>
-            <p className="answer">Empty</p>
-            <p onClick={selectWord} className={wordStyle}>
-              {word}
-            </p>
-          </>
-        )}
-      </div>
+      {finishGameBtn ? (
+        <>
+          <p className={checkedAnswerStyle}>{checkedAnswerWord}</p>
+          <p className={checkWordStyle}>{word}</p>
+        </>
+      ) : (
+        <>
+          <p className="answer">Empty</p>
+          <p onClick={selectWord} className={wordStyle}>
+            {word}
+          </p>
+        </>
+      )}
     </div>
   );
 };

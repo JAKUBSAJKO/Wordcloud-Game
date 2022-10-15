@@ -17,3 +17,10 @@ input::placeholder {
   color: rgb(21, 22, 21);
   font-size: 11px;
 }
+
+@media screen and (max-width: 767px) {
+  input {
+    width: 264px;
+    padding: 0 8px;
+  }
+}
