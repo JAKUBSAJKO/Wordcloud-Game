@@ -15,16 +15,20 @@ export const Word = ({ word }) => {
 
   const selectWord = () => {
     if (selectedWords.includes(word)) {
-      removeFromArray(word, selectedWords, setSelectedWords);
+      if (selectedWords.length === 1) {
+        setSelectedWords([]);
+      } else {
+        removeFromArray(word, selectedWords, setSelectedWords);
+      }
     } else {
       addToArray(word, setSelectedWords);
     }
   };
 
   const checkedAnswerStyle = correctAnswers.includes(word)
-    ? 'word correctAnswer'
+    ? 'answer correctAnswer'
     : wrongAnswers.includes(word)
-    ? 'word wrongAnswer'
+    ? 'answer wrongAnswer'
     : 'answer';
 
   const checkedAnswerWord = correctAnswers.includes(word)

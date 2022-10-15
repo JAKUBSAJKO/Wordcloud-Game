@@ -9,7 +9,7 @@
 .answer {
   font-size: 18px;
   font-weight: 700;
-  margin: 0 8px;
+  margin: 8px 0;
   pointer-events: none;
   visibility: hidden;
 }
@@ -36,8 +36,10 @@
 
 .correctAnswer {
   color: greenyellow;
+  visibility: visible;
 }
 
 .wrongAnswer {
   color: palevioletred;
+  visibility: visible;
 }
