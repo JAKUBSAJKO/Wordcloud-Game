@@ -1,15 +1,9 @@
 .layout-result {
   height: 100vh;
-  display: flex;
-  justify-content: center;
-  align-items: center;
 }
 
-.container-result {
-  display: flex;
+.result-container {
   flex-direction: column;
-  justify-content: center;
-  align-items: center;
 }
 
 .result-text {

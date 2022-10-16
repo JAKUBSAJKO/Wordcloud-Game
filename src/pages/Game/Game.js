@@ -40,8 +40,8 @@ const Game = () => {
   };
 
   return (
-    <div className="layout-game">
-      <div className="game-container">
+    <div className="layout-game flex-center">
+      <div className="game-container flex-center">
         <h2>{question}</h2>
         <div className="game-board">
           {allWords.map((word) => (

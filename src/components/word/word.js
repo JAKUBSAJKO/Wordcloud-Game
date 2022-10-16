@@ -46,7 +46,7 @@ export const Word = ({ word }) => {
   const wordStyle = selectedWords.includes(word) ? 'word select' : 'word';
 
   return (
-    <div className="card">
+    <div className="card flex-center">
       {finishGameBtn ? (
         <>
           <p className={checkedAnswerStyle}>{checkedAnswerWord}</p>

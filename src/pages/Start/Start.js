@@ -3,7 +3,7 @@ import './Start.css';
 
 const Start = () => {
   return (
-    <div className="container">
+    <div className="user-container flex-center">
       <h1>Wordcloud game</h1>
       <User />
     </div>

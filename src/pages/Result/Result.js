@@ -25,8 +25,8 @@ const Result = () => {
   };
 
   return (
-    <div className="layout-result">
-      <div className="container-result">
+    <div className="layout-result flex-center">
+      <div className="result-container flex-center">
         <p className="result-text">Congratulations, {username}!</p>
         <p className="result-text">Your score:</p>
         <p className="points">{points} points</p>
