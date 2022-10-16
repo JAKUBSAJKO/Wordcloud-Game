@@ -51,7 +51,7 @@ export const User = () => {
   }, []);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="flex-center">
       <input
         type="text"
         placeholder="Enter your nickname here..."
