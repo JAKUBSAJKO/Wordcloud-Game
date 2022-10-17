@@ -1,9 +1,10 @@
 import './game.css';
 import { Button } from 'components/button/button';
 import { Word } from 'components/word/word';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { GameContext } from 'contexts/gameContext';
 import { useNavigate } from 'react-router-dom';
+import * as myConst from 'constants/index';
 
 const Game = () => {
   const navigate = useNavigate();
@@ -19,6 +20,7 @@ const Game = () => {
     goodWords,
     question,
     addToArray,
+    username,
   } = useContext(GameContext);
 
   const checkAnswers = () => {
@@ -39,6 +41,10 @@ const Game = () => {
     });
   };
 
+  useEffect(() => {
+    if (username.length < 1) navigate(myConst.HOME);
+  }, []);
+
   return (
     <div className="layout-game flex-center">
       <div className="game-container flex-center">
@@ -49,7 +55,7 @@ const Game = () => {
           ))}
         </div>
         {finishGameBtn ? (
-          <Button onClick={() => navigate('/result')} text="finish game" />
+          <Button onClick={() => navigate(myConst.RESULT)} text="finish game" />
         ) : (
           <Button onClick={checkAnswers} text="check answers" />
         )}

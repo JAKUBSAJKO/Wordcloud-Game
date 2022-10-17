@@ -1,8 +1,9 @@
 import { Button } from 'components/button/button';
 import { GameContext } from 'contexts/gameContext';
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './result.css';
+import * as myConst from 'constants/index';
 
 const Result = () => {
   const navigate = useNavigate();
@@ -21,8 +22,12 @@ const Result = () => {
 
   const endGame = () => {
     setFinishGameBtn((prev) => !prev);
-    navigate('/');
+    navigate(myConst.HOME);
   };
+
+  useEffect(() => {
+    if (username.length < 1) navigate(myConst.HOME);
+  }, []);
 
   return (
     <div className="layout-result flex-center">

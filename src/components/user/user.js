@@ -5,6 +5,7 @@ import { GameContext } from 'contexts/gameContext';
 import { useContext, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './user.css';
+import * as myConst from 'constants/index';
 
 export const User = () => {
   const navigate = useNavigate();
@@ -23,8 +24,6 @@ export const User = () => {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    localStorage.clear();
-    localStorage.setItem('Username', username);
     setQuestion([]);
     setAllWords([]);
     setGoodWords([]);
@@ -35,7 +34,7 @@ export const User = () => {
     const category =
       categoriesName[Math.floor(Math.random() * categoriesName.length)];
     API(category);
-    navigate('/game');
+    navigate(myConst.GAME);
   };
 
   const API = (category) => {
